@@ -1,15 +1,15 @@
 package org.kr1v.unlockedcamera.client.mixin;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.data.DataTracked;
-import net.minecraft.world.entity.EntityLike;
 import org.kr1v.unlockedcamera.client.UnlockedCameraConfigManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(Entity.class)
-public abstract class EntityMixin implements DataTracked, EntityLike {
+public abstract class EntityMixin {
+    @Shadow
+    public abstract void updatePosition(double x, double y, double z);
     @Shadow
     public abstract void setYaw(float yaw);
     @Shadow
@@ -28,9 +28,10 @@ public abstract class EntityMixin implements DataTracked, EntityLike {
      * @reason prevent pitch from clamping internally
      */
     @Overwrite
-    public void setAngles(float yaw, float pitch) {
+    public void updatePositionAndAngles(double x, double y, double z, float yaw, float pitch) {
         float normalizedPitch = ((pitch + 180) % 360 + 360) % 360 - 180;
-        this.setYaw(yaw%360);
+        this.updatePosition(x, y, z);
+        this.setYaw(yaw % 360.0F);
         this.setPitch(normalizedPitch);
         this.prevYaw = this.getYaw();
         this.prevPitch = this.getPitch();
