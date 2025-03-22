@@ -8,6 +8,7 @@
   "contact": {},
   "license": "MIT",
   "environment": "client",
+  "accessWidener" : "unlockedcamera.accesswidener",
   "icon": "icon.png",
   "entrypoints": {
     "client": [
@@ -26,7 +27,7 @@
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
-    "minecraft": ">=1.14 <1.21.2",
+    "minecraft": ">=1.18 <1.21.2",
     "cloth-config2": "*"
   }
 }

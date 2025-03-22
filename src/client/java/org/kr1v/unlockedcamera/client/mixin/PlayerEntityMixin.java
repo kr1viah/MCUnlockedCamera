@@ -5,6 +5,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.kr1v.unlockedcamera.client.UnlockedCameraConfigManager;
@@ -36,7 +37,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             if (this.isSwimming()) {
                 double d = getRotationVector().y;
                 double e = d < -0.2 ? 0.085 : 0.06;
-                if (d <= 0.0 || this.jumping || !this.world.getBlockState(new BlockPos(this.getX(), this.getY() + 1.0 - 0.1, this.getZ())).getFluidState().isEmpty()) {
+                if (d <= 0.0 || this.jumping || !this.world.getBlockState(new BlockPos(MathHelper.floor(this.getX()), MathHelper.floor(this.getY() + 1.0 - 0.1), MathHelper.floor(this.getZ()))).getFluidState().isEmpty()) {
                     Vec3d vec3d = this.getVelocity();
                     this.setVelocity(vec3d.add(0.0, (d - vec3d.y) * e, 0.0));
                 }

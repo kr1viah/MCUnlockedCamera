@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(BipedEntityModel.class)
-public abstract class BipedEntityModelMixin<T extends LivingEntity> extends AnimalModel<T> implements ModelWithArms, ModelWithHead {
+public abstract class BipedEntityModelMixin<T extends LivingEntity> implements ModelWithArms, ModelWithHead {
 
     @Unique
     private static final float pi = (float)Math.PI;

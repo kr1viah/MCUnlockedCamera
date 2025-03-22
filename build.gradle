@@ -30,7 +30,9 @@ repositories {
     maven { url "https://maven.shedaniel.me/" }
     maven { url "https://maven.terraformersmc.com/" }
 }
-
+loom {
+    accessWidenerPath = file("src/client/resources/unlockedcamera.accesswidener")
+}
 dependencies {
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -56,8 +58,7 @@ processResources {
                 "loader_version": project.loader_version
     }
 }
-
-def targetJavaVersion = 17
+def targetJavaVersion = project.java_version.toInteger()
 tasks.withType(JavaCompile).configureEach {
     // ensure that the encoding is set to UTF-8, no matter what the system default is
     // this fixes some edge cases with special characters not displaying correctly
