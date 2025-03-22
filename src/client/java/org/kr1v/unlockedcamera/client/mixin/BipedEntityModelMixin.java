@@ -2,12 +2,9 @@ package org.kr1v.unlockedcamera.client.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.client.model.ModelPart;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.client.render.entity.model.ModelWithArms;
-import net.minecraft.client.render.entity.model.ModelWithHead;
-import net.minecraft.client.render.entity.state.BipedEntityRenderState;
+import net.minecraft.client.render.entity.model.*;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Arm;
 import org.joml.Math;
 import org.objectweb.asm.Opcodes;
@@ -16,13 +13,10 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(BipedEntityModel.class)
-public class BipedEntityModelMixin<T extends BipedEntityRenderState> extends EntityModel<T> implements ModelWithArms, ModelWithHead {
-    protected BipedEntityModelMixin(ModelPart root) {
-        super(root);
-    }
+public abstract class BipedEntityModelMixin<T extends LivingEntity> extends AnimalModel<T> implements ModelWithArms, ModelWithHead {
 
     @Unique
-    private static final float pi = Math.PI_f;
+    private static final float pi = (float)Math.PI;
     /**
      * @author kr1v
      * @reason prevent arms going crazy when punching

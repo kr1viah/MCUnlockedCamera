@@ -39,7 +39,7 @@ dependencies {
     modImplementation "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "com.terraformersmc:modmenu:13.0.3"
+    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 
     implementation 'com.google.code.gson:gson:2.12.0'
 }
