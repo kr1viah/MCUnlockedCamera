@@ -35,12 +35,10 @@ public abstract class LivingEntityMixin extends Entity {
 
             if (this.isSprinting()) {
                 float normalizedPitch = ((this.getPitch() + 180) % 360 + 360) % 360 - 180;
-                if ((normalizedPitch < -90 || normalizedPitch > 90) && UnlockedCameraConfigManager.getConfig().shouldInvertMovement) {
-                    float g = this.getYaw() * (float) (Math.PI / 180.0);
-
+                float g = this.getYaw() * (float) (Math.PI / 180.0);
+                if (UnlockedCameraConfigManager.getConfig().shouldInvertMovement && (normalizedPitch < -90 || normalizedPitch > 90)) {
                     this.setVelocity(this.getVelocity().add(new Vec3d(-MathHelper.sin(g) * -0.2, 0.0, MathHelper.cos(g) * -0.2)));
                 } else {
-                    float g = this.getYaw() * (float) (Math.PI / 180.0);
                     this.setVelocity(this.getVelocity().add(new Vec3d(-MathHelper.sin(g) * 0.2, 0.0, MathHelper.cos(g) * 0.2)));
                 }
             }
