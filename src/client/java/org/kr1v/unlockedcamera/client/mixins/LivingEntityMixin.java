@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
-    @WrapOperation(method = "jump", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;sin(F)F"))
-    private float unlockedCamera$sinWrap(float value, Operation<Float> original) {
+    @WrapOperation(method = "jump", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;sin(D)F"))
+    private float unlockedCamera$sinWrap(double value, Operation<Float> original) {
         int mul = 1;
         if (UnlockedCameraConfigManager.getConfig().enabled) {
             float normalizedPitch = ((((Entity) (Object) this).getPitch() + 180) % 360 + 360) % 360 - 180;
@@ -23,8 +23,8 @@ public abstract class LivingEntityMixin {
         return original.call(value) * mul;
     }
 
-    @WrapOperation(method = "jump", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;cos(F)F"))
-    private float unlockedCamera$cosWrap(float value, Operation<Float> original) {
+    @WrapOperation(method = "jump", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;cos(D)F"))
+    private float unlockedCamera$cosWrap(double value, Operation<Float> original) {
         int mul = 1;
         if (UnlockedCameraConfigManager.getConfig().enabled) {
             float normalizedPitch = ((((Entity) (Object) this).getPitch() + 180) % 360 + 360) % 360 - 180;

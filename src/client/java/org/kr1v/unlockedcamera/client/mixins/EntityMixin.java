@@ -27,12 +27,6 @@ public abstract class EntityMixin {
     public abstract void setPitch(float pitch);
 
     @Shadow
-    public float prevYaw;
-
-    @Shadow
-    public float prevPitch;
-
-    @Shadow
     @Nullable
     public abstract Entity getVehicle();
 
@@ -64,15 +58,12 @@ public abstract class EntityMixin {
             float normalizedPitch = ((this.getPitch() + 180) % 360 + 360) % 360 - 180;
             if ((normalizedPitch > 90 || normalizedPitch < -90) && UnlockedCameraConfigManager.getConfig().shouldInvertMouse) {
                 this.setYaw(this.getYaw() - g);
-                this.prevYaw -= g;
             } else {
                 this.setYaw(this.getYaw() + g);
-                this.prevYaw += g;
             }
             // TODO/NOTE: __ This is the snippet thats most important __
 
             this.setPitch(this.getPitch() + f);
-            this.prevPitch += f;
             if (this.getVehicle() != null) {
                 this.getVehicle().onPassengerLookAround((Entity) (Object) this);
             }
