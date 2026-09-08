@@ -11,14 +11,14 @@ public class UnlockedCameraKeybindManager {
 
     public static void initializeKeybind() {
         toggleCameraUnlockedKey = KeyBindingHelper.registerKeyBinding(new KeyMapping(
-                    "unlockedcamera.toggleCameraUnlockedKey",
+                    "unlockedcamera.key",
                     InputConstants.Type.KEYSYM,
                     GLFW.GLFW_KEY_UNKNOWN,
-                    "unlockedcamera.key"
+                    "unlockedcamera.toggleCameraUnlockedKey"
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (toggleCameraUnlockedKey.wasPressed()) {
+            if (toggleCameraUnlockedKey.consumeClick()) {
                 UnlockedCameraConfigManager.getConfig().enabled = !UnlockedCameraConfigManager.getConfig().enabled;
             }
         });
