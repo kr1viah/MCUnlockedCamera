@@ -1,19 +1,18 @@
 package org.kr1v.unlockedcamera.client;
 
 import org.lwjgl.glfw.GLFW;
-
+import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.util.InputUtil;
+import net.minecraft.client.KeyMapping;
 
 public class UnlockedCameraKeybindManager {
-    private static KeyBinding toggleCameraUnlockedKey;
+    private static KeyMapping toggleCameraUnlockedKey;
 
     public static void initializeKeybind() {
-        toggleCameraUnlockedKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+        toggleCameraUnlockedKey = KeyBindingHelper.registerKeyBinding(new KeyMapping(
                     "unlockedcamera.toggleCameraUnlockedKey",
-                    InputUtil.Type.KEYSYM,
+                    InputConstants.Type.KEYSYM,
                     GLFW.GLFW_KEY_UNKNOWN,
                     "unlockedcamera.key"
         ));
