@@ -8,5 +8,7 @@
 	"unlockedcamera.shouldInvertMovementSwimming": "Invert movement swimming",
 	"unlockedcamera.shouldInvertMovementSwimming.description": "When looking upside down and swimming, will invert movement. Is recommended, very intuitive",
 	"unlockedcamera.shouldInvertMouse": "Invert mouse",
-	"unlockedcamera.shouldInvertMouse.description": "When looking upside down, will invert horizontal mouse movement. Is recommended, very intuitive"
+	"unlockedcamera.shouldInvertMouse.description": "When looking upside down, will invert horizontal mouse movement. Is recommended, very intuitive",
+    "unlockedcamera.toggleCameraUnlockedKey": "Key that toggles whether the mod is enabled",
+    "unlockedcamera.key": "A keybind created by the mod"
 }

@@ -6,5 +6,7 @@ public class UnlockedCameraClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         UnlockedCameraConfigManager.initializeConfig();
+
+        UnlockedCameraKeybindManager.initializeKeybind();
     }
 }
